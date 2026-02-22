@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Arch-CV-Tracker-STM32",
+			"path": ".."
+		},
+		{
+			"name": "Servodrive",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
