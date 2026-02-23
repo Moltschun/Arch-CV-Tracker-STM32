@@ -1,0 +1,43 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/include",
+                "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/src",
+                "/home/epictetus/.platformio/packages/framework-cmsis/CMSIS/Include",
+                "/home/epictetus/.platformio/packages/framework-cmsis-stm32f1/Include",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/include",
+                    "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/src",
+                    "/home/epictetus/.platformio/packages/framework-cmsis/CMSIS/Include",
+                    "/home/epictetus/.platformio/packages/framework-cmsis-stm32f1/Include",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60119",
+                "STM32F103xB",
+                "STM32F1",
+                "F_CPU=72000000L",
+                ""
+            ],
+            "compilerPath": "/home/epictetus/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc",
+            "compilerArgs": [
+                "-mthumb",
+                "-mcpu=cortex-m3",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
