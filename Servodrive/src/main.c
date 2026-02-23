@@ -2,7 +2,7 @@
 #include "uart_driver.h"
 #include "sys.core.h"
 
-void main(void){
+int main(void){
 
     RCC_System_72HZ();
 
@@ -16,7 +16,7 @@ void main(void){
     {
         UART_String("Введите канал (1-2): ");
         while(!rx_flag);
-        uint8_t ch = rx_buffer;
+        uint8_t ch = rx_buffer - '0';
         rx_flag = 0;
         UART_String("Введите угол поворота (0-180): ");
         while(!rx_flag);

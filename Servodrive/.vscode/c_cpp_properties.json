@@ -8,21 +8,21 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/include",
-                "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/src",
-                "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/lib/Drivers",
-                "/home/epictetus/.platformio/packages/framework-cmsis/CMSIS/Include",
-                "/home/epictetus/.platformio/packages/framework-cmsis-stm32f1/Include",
+                "d:/STM32_Study/Arch-CV-Tracker-STM32/Servodrive/include",
+                "d:/STM32_Study/Arch-CV-Tracker-STM32/Servodrive/src",
+                "d:/STM32_Study/Arch-CV-Tracker-STM32/Servodrive/lib/Drivers",
+                "C:/.platformio/packages/framework-cmsis/CMSIS/Include",
+                "C:/.platformio/packages/framework-cmsis-stm32f1/Include",
                 ""
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/include",
-                    "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/src",
-                    "/home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Servodrive/lib/Drivers",
-                    "/home/epictetus/.platformio/packages/framework-cmsis/CMSIS/Include",
-                    "/home/epictetus/.platformio/packages/framework-cmsis-stm32f1/Include",
+                    "d:/STM32_Study/Arch-CV-Tracker-STM32/Servodrive/include",
+                    "d:/STM32_Study/Arch-CV-Tracker-STM32/Servodrive/src",
+                    "d:/STM32_Study/Arch-CV-Tracker-STM32/Servodrive/lib/Drivers",
+                    "C:/.platformio/packages/framework-cmsis/CMSIS/Include",
+                    "C:/.platformio/packages/framework-cmsis-stm32f1/Include",
                     ""
                 ]
             },
@@ -33,7 +33,7 @@
                 "F_CPU=72000000L",
                 ""
             ],
-            "compilerPath": "/home/epictetus/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc",
+            "compilerPath": "C:/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc.exe",
             "compilerArgs": [
                 "-mthumb",
                 "-mcpu=cortex-m3",

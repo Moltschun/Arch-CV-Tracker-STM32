@@ -35,7 +35,7 @@ void Servo_Turn (uint8_t channel, uint32_t degree){
 
     if (degree > 180) degree = 180;
 
-    uint32_t turn = 1000 + (degree * 1000) / 180;
+    uint32_t turn = 500 + (degree * 2000) / 180;
 
     if (channel == 1) TIM2->CCR1 = turn;
     else if (channel == 2) TIM2->CCR2 = turn;
