@@ -3390,7 +3390,7 @@ endif
 ifneq "$(HOSTARCH)" "x86_64"
 /home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Rasberry/projects/turret_os/buildroot-2025.11.2/output/build/buildroot-config/auto.conf: FORCE
 endif
-ifneq "$(BR2_VERSION_FULL)" "-g5185252-dirty"
+ifneq "$(BR2_VERSION_FULL)" "-g010e1f75-dirty"
 /home/epictetus/storage/Programming/Arch-CV-Tracker-STM32/Rasberry/projects/turret_os/buildroot-2025.11.2/output/build/buildroot-config/auto.conf: FORCE
 endif
 
