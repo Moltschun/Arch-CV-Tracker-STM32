@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot -g010e1f75-dirty Configuration
+# Buildroot -g0ada5810 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -1311,7 +1311,7 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 # BR2_PACKAGE_RNG_TOOLS is not set
 # BR2_PACKAGE_ROCKCHIP_MALI is not set
 # BR2_PACKAGE_ROCKCHIP_RKBIN is not set
-# BR2_PACKAGE_RPI_USERLAND is not set
+BR2_PACKAGE_RPI_USERLAND=y
 # BR2_PACKAGE_RS485CONF is not set
 # BR2_PACKAGE_RTC_TOOLS is not set
 # BR2_PACKAGE_RTL8188EU is not set
