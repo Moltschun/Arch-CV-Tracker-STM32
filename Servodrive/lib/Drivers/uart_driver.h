@@ -10,8 +10,9 @@
 #include "stm32f1xx.h"
 
 /* Глобальные флаги обмена данными */
-extern volatile uint32_t rx_buffer; ///< Буфер последнего принятого байта
-extern volatile uint32_t rx_flag;   ///< Флаг готовности данных (1 - получено, 0 - пусто)
+extern volatile char rx_buffer[32]; ///< Буфер последнего принятого байта
+extern volatile uint8_t rx_flag;   ///< Флаг готовности данных (1 - получено, 0 - пусто)
+extern volatile uint8_t rx_index;
 
 /**
  * @brief Инициализация USART1 (115200 baud, 8N1, прерывания RX).

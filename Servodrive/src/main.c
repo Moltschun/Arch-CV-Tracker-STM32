@@ -1,47 +1,52 @@
 #include "servo.h"
 #include "uart_driver.h"
 #include "sys.core.h"
-#include <stdlib.h>
+#include <stdio.h> // Необходим для sscanf
 
-/**
- * @brief Точка входа в программу.
- * Реализует последовательный опрос UART для управления осями.
- */
-void main(void) {
-    /* Инициализация систем */
+// Базовые углы обзора при старте (Центр)
+int pan_angle = 90;
+int tilt_angle = 90;
+
+int main(void) {
     RCC_System_72HZ();
     UART_Init();
     Servo_Init();
 
-    char text [10];
-    uint8_t index_text = 0;
-
-    UART_String("System Online. Protocol Ready...\r\n");
+    UART_String("Turret Tracking System Online.\r\n");
 
     while (1) {
-        // Ожидание выбора канала
-        UART_String("Select Channel (1-2): \r\n");
-        while(!rx_flag);
-        uint8_t ch = rx_buffer - '0'; // Примечание: ожидается бинарное значение или добавить '-0' для ASCII
-        UART_String("Entered: channel");
-        rx_flag = 0;
+        // Проверяем, собран ли пакет в прерывании
+        if (rx_flag) {
+            int target_x = 0;
+            int target_y = 0;
 
-        // Ожидание угла поворота
-        UART_String("Enter Angle (0-180): \r\n");
-        for (uint8_t i = 0; i < 10; i++){
-            while(!rx_flag);
-            if (rx_buffer == '\r' || rx_buffer == '\n'){
-                break;
+            // Парсинг пакета "X,Y"
+            if (sscanf((char*)rx_buffer, "%d,%d", &target_x, &target_y) == 2) {
+                
+                // Вычисление вектора ошибки (цель всегда должна быть в центре: 320x240)
+                int error_x = target_x - 320;
+                int error_y = target_y - 240;
+
+                // П-регулятор с мертвой зоной (Deadzone), чтобы избежать дрожания сервоприводов
+                if (error_x > 30) pan_angle -= 1;  // Цель правее центра -> поворот
+                if (error_x < -30) pan_angle += 1; // Цель левее центра -> поворот
+                
+                if (error_y > 30) tilt_angle += 1; // Цель ниже центра -> наклон
+                if (error_y < -30) tilt_angle -= 1;// Цель выше центра -> подъем
+
+                // Жесткие механические лимиты
+                if (pan_angle > 180) pan_angle = 180;
+                if (pan_angle < 0) pan_angle = 0;
+                if (tilt_angle > 180) tilt_angle = 180;
+                if (tilt_angle < 0) tilt_angle = 0;
+
+                // Передача новых углов на приводы
+                Servo_Turn(1, pan_angle);
+                Servo_Turn(2, tilt_angle);
             }
-
-            text[i] = rx_buffer;
             
+            // Сброс флага готовности, ждем следующий пакет
+            rx_flag = 0; 
         }
-        uint8_t ang = rx_buffer;
-        UART_String("Entered: ang");
-        rx_flag = 0;
-
-        Servo_Turn(ch, ang);
-        UART_String("\r\nCommand Executed.\r\n");
     }    
 }

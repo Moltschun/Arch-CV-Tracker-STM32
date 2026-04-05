@@ -1,7 +1,8 @@
 #include "uart_driver.h"
 
-volatile uint32_t rx_buffer = 0;
-volatile uint32_t rx_flag = 0;
+volatile char rx_buffer[32];
+volatile uint8_t rx_flag = 0;
+volatile uint8_t rx_index = 0;
 
 void UART_Init(void) {
     // Включение тактирования GPIOA и USART1
@@ -38,7 +39,19 @@ void UART_String(char *string) {
  */
 void USART1_IRQHandler(void) {
     if (USART1->SR & USART_SR_RXNE) {
-        rx_buffer = USART1->DR;
-        rx_flag = 1; // Установка программного флага
+        char data = USART1->DR;
+        
+        if (data == '\n') {
+            rx_buffer[rx_index] = '\0'; // Закрываем строку
+            rx_flag = 1;           // Поднимаем флаг для main
+            rx_index = 0;               // Сбрасываем указатель для нового пакета
+        } 
+        // Игнорируем символ возврата каретки, если он есть
+        else if (data != '\r' && rx_index < sizeof(rx_buffer) - 1) {
+            rx_buffer[rx_index++] = data;
+        } 
+        else if (rx_index >= sizeof(rx_buffer) - 1) {
+            rx_index = 0; // Защита от переполнения (сброс мусора)
+        }
     }
 }

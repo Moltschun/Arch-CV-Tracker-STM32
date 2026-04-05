@@ -4,7 +4,7 @@
  */
 
 #ifndef SYS_CORE_H_
-#define SYS_CORE_H|
+#define SYS_CORE_H_
 
 #include "stm32f1xx.h"
 
