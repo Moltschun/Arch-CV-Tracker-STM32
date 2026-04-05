@@ -1,0 +1,12 @@
+# Эталонный конфиг для Turret OS (Оптика через GPU VideoCore)
+disable_overscan=1
+arm_64bit=1
+
+# --- НАШ БОЕВОЙ БЛОК НАСТРОЕК ---
+gpu_mem=256
+start_x=1
+enable_uart=1
+dtoverlay=disable-bt
+dtparam=i2c_arm=on
+dtparam=i2c_vc=on
+# dtoverlay=ov5647 (Отключено: ядро не управляет питанием)
