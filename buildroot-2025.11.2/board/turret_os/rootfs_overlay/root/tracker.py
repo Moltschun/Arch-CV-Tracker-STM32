@@ -29,6 +29,10 @@ except serial.SerialException:
 
 # Инициализация камеры (Зрительный нерв)
 cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+cap.set(cv2.CAP_PROP_FPS, 30)
+
 time.sleep(2) # Прогрев сенсора
 
 if not cap.isOpened():
@@ -121,10 +125,6 @@ try:
         # Отправляем ПРЕДСКАЗАННЫЕ координаты на STM32
         packet = f"{aim_x},{aim_y}\r\n"
         uart.write(packet.encode('utf-8'))
-
-        print(f"Цель: X={aim_x} Y={aim_y} | Скорость: Vx={pred_vx:.1f} Vy={pred_vy:.1f}")
-
-        time.sleep(0.1)
 
         # === МОДУЛЬ ТАКТИЧЕСКОЙ ТЕЛЕМЕТРИИ ===
         current_time = time.time()
