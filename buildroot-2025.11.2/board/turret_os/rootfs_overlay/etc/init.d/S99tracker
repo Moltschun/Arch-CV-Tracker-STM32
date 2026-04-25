@@ -1,0 +1,28 @@
+#!/bin/sh
+# Автозапуск подсистемы Зрительной коры (Turret OS)
+
+case "$1" in
+  start)
+    printf "Активация оптического трекера: "
+    # Запуск Python-скрипта в фоновом режиме (&)
+    modprobe bcm2835-v4l2
+    sleep 1
+    # Вывод ошибок и логов направляется в "черную дыру" (/dev/null), чтобы не засорять память
+    python3 /root/tracker.py > /dev/null 2>&1 &
+    echo "ОК"
+    ;;
+  stop)
+    printf "Деактивация оптического трекера: "
+    # Принудительная остановка процесса
+    killall python
+    echo "ОК"
+    ;;
+  restart|reload)
+    $0 stop
+    $0 start
+    ;;
+  *)
+    echo "Использование: $0 {start|stop|restart}"
+    exit 1
+esac
+exit 0

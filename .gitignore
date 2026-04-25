@@ -1,0 +1,24 @@
+# --- Временные файлы и архивы ---
+*.tar.gz
+*.log
+.DS_Store
+.vscode/
+
+# --- STM32 (PlatformIO) ---
+.pio/
+.gcc-flags.json
+
+# --- Buildroot (Глобальное игнорирование с исключениями) ---
+# Сначала игнорируем всё внутри папки Buildroot
+buildroot-2025.11.2/*
+
+# Затем разрешаем Git видеть только наши критически важные файлы
+!buildroot-2025.11.2/configs/
+!buildroot-2025.11.2/board/
+!buildroot-2025.11.2/Makefile
+!buildroot-2025.11.2/Config.in
+
+# Игнорируем результаты сборки внутри Buildroot, даже если они в разрешенных папках
+buildroot-2025.11.2/output/
+buildroot-2025.11.2/dl/
+buildroot-2025.11.2/build/
